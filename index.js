@@ -6,8 +6,19 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 const corsSettings = {
-    origin: 'https://os.netlabdte.com',
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  origin: function (origin, callback) {
+    const origins = [
+      'http://localhost:5173',         
+      'https://cs9-falahandhesryo.vercel.app'
+    ];
+
+    if (!origin || origins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed for this origin"));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
 };
 
 app.use(cors(corsSettings));
