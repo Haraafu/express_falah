@@ -1,6 +1,6 @@
 const userRepository = require("../repositories/user.repository");
 const baseResponse = require("../utils/baseResponse.util");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 const emailRegex = /^[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,4}$/;
 const passwordRegex = /^(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$/;
